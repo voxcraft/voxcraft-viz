@@ -1,0 +1,40 @@
+<RCC>
+    <qresource prefix="/main">
+        <file>assets/voxcraft-viz.ico</file>
+    </qresource>
+    <qresource prefix="/Icons">
+        <file>assets/Icons/Record.png</file>
+        <file>assets/Icons/Bucket.png</file>
+        <file>assets/Icons/Tensile.png</file>
+        <file>assets/Icons/3DBrush.png</file>
+        <file>assets/Icons/Sandbox.png</file>
+        <file>assets/Icons/Analyze.png</file>
+        <file>assets/Icons/Aux_View.png</file>
+        <file>assets/Icons/BCs.png</file>
+        <file>assets/Icons/Copy.png</file>
+        <file>assets/Icons/Cut.png</file>
+        <file>assets/Icons/EditLayer.png</file>
+        <file>assets/Icons/Ellipse.png</file>
+        <file>assets/Icons/Info.png</file>
+        <file>assets/Icons/LayerBack.png</file>
+        <file>assets/Icons/LayerForward.png</file>
+        <file>assets/Icons/Material.png</file>
+        <file>assets/Icons/New.png</file>
+        <file>assets/Icons/Open.png</file>
+        <file>assets/Icons/Paste.png</file>
+        <file>assets/Icons/Pencil.png</file>
+        <file>assets/Icons/Rectangle.png</file>
+        <file>assets/Icons/Save.png</file>
+        <file>assets/Icons/Section.png</file>
+        <file>assets/Icons/ViewBack.png</file>
+        <file>assets/Icons/ViewBottom.png</file>
+        <file>assets/Icons/ViewFront.png</file>
+        <file>assets/Icons/ViewLeft.png</file>
+        <file>assets/Icons/ViewPerspective.png</file>
+        <file>assets/Icons/ViewRight.png</file>
+        <file>assets/Icons/ViewTop.png</file>
+        <file>assets/Icons/Workspace.png</file>
+        <file>assets/Icons/ZoomExtents2.png</file>
+        <file>assets/Icons/FullScreen.png</file>
+    </qresource>
+</RCC>

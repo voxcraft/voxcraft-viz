@@ -1,0 +1,67 @@
+name: voxcraft-viz
+base: core18 # the base snap is the execution environment for this snap
+version: '3.01'
+summary: Design your voxel-based soft robot
+description: |
+  This is one of the three parts of voxcraft software.
+  1. voxcraft-sim: A highly parallelized physics engine that can simulate the voxel-based soft robots. This part utilizes CUDA and GPU.
+  2. voxcraft-evo: The evolutionary algorithms that can automatically design voxel-based soft robots.
+  3. voxcraft-viz: The visualization tool that can playback the history file produced by voxcraft-sim, and it can used for manually design bots and run it in a CPU-based physics engine.
+  Learn more about the whole voxcraft project (not just software) to get a bigger picture, please refer to: https://voxcraft.github.io/
+
+grade: stable
+confinement: strict
+
+parts:
+  cmake:
+    source: https://github.com/Kitware/CMake
+    source-type: git
+    plugin: cmake
+    override-build: |
+      mkdir -p build
+      cd build
+      cmake \
+        -DCMAKE_INSTALL_PREFIX=$SNAPCRAFT_STAGE/cmake \
+        $SNAPCRAFT_PART_SRC
+      make -j 10
+      make install
+    build-packages:
+      - libssl-dev
+  voxcraft-viz:
+    after: [cmake]
+    plugin: make
+    source: .
+    # source-type: git
+    override-build: |
+      $SNAPCRAFT_STAGE/cmake/bin/cmake \
+        -DCMAKE_INSTALL_PREFIX=$SNAPCRAFT_PART_INSTALL/usr/local \
+        -DCMAKE_BUILD_TYPE=Release \
+        $SNAPCRAFT_PART_SRC
+      make -j 10
+      make install
+    build-packages:
+      - g++
+      - qt5-default
+      - libglfw3-dev
+      - freeglut3-dev
+      - libglm-dev
+      - mesa-utils
+      - zlib1g-dev
+      - libqt5opengl5-dev
+      - libboost-all-dev
+    stage-packages:
+      - libglu1-mesa
+
+apps:
+  voxcraft-viz:
+    command: bin/voxcraft-viz
+    extensions:
+      - kde-neon
+    plugs:
+      - opengl
+      - home
+      - mount-observe
+      - optical-drive
+      - network-bind
+      - network
+      - removable-media
