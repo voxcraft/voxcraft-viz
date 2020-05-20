@@ -4,11 +4,11 @@
 
 This repo is one of the three parts of voxcraft software.
 
-1. [voxcraft-sim](https://github.com/liusida/voxcraft-sim): A highly parallelized physics engine that can simulate the voxel-based soft robots. This part utilizes CUDA and GPU.
+1. [voxcraft-sim](https://github.com/voxcraft/voxcraft-sim): A highly parallelized physics engine that can simulate the voxel-based soft robots. This part utilizes CUDA and GPU.
 
 2. voxcraft-evo: The evolutionary algorithms that can automatically design voxel-based soft robots.
 
-3. [voxcraft-viz](https://github.com/liusida/voxcraft-viz): The visualization tool that can playback the history file produced by voxcraft-sim, and it can used for manually design bots and run it in a CPU-based physics engine.
+3. [voxcraft-viz](https://github.com/voxcraft/voxcraft-viz): The visualization tool that can playback the history file produced by voxcraft-sim, and it can used for manually design bots and run it in a CPU-based physics engine.
 
 Learn more about the whole voxcraft project (not just software) to get a bigger picture, please refer to: https://voxcraft.github.io/
 
