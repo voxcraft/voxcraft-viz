@@ -48,7 +48,8 @@ HEADERS += ./src/VX1/VX_Enums.h \
     ./src/VX2/include/VX_MaterialVoxel.h \
     ./src/VX2/include/VX_MeshRender.h \
     ./src/VX2/include/VX_Utils.h \
-    ./src/VX2/include/VX_Voxel.h
+    ./src/VX2/include/VX_Voxel.h \
+    ./src/qcustomplot/qcustomplot.h
 SOURCES += ./src/main/main.cpp \
     ./src/main/VoxCad.cpp \
     ./src/QTUtils/QOpenGL.cpp \
@@ -92,7 +93,8 @@ SOURCES += ./src/main/main.cpp \
     ./src/VX1/VX_MeshUtil.cpp \
     ./src/VX1/VX_FRegion.cpp \
     ./src/VX1/VXS_Bond.cpp \
-    ./src/VX1/GL_Utils.cpp
+    ./src/VX1/GL_Utils.cpp \
+    ./src/qcustomplot/qcustomplot.cpp
 FORMS += ./src/main/vBCs.ui \
     ./src/main/vFEAInfo.ui \
     ./src/main/VoxCad.ui \
@@ -104,4 +106,4 @@ FORMS += ./src/main/vBCs.ui \
     ./src/main/vVoxInfo.ui \
     ./src/main/vWorkSpace.ui \
     ./src/main/vVideoGen.ui
-RESOURCES += ./VoxCad.qrc
+RESOURCES += ./voxcraft-viz.qrc
