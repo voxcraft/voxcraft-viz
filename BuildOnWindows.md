@@ -65,3 +65,26 @@ Copy this folder from `C:\QT\QTx.x.x\plugins\`
 ```
 platforms/
 ```
+
+In all, the deliverable folder will look like this:
+```
+.
+├── libgcc_s_seh-1.dll
+├── libstdc++-6.dll
+├── libwinpthread-1.dll
+├── opengl32.dll
+├── platforms
+│   ├── qdirect2d.dll
+│   ├── qminimal.dll
+│   ├── qoffscreen.dll
+│   └── qwindows.dll
+├── Qt5Core.dll
+├── Qt5Gui.dll
+├── Qt5OpenGL.dll
+├── Qt5PrintSupport.dll
+├── Qt5Widgets.dll
+├── Qt5Xml.dll
+└── voxcraft-viz.exe
+
+1 directory, 15 files
+```
