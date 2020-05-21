@@ -3,6 +3,7 @@ TARGET = voxcraft-viz
 QT += core gui xml opengl concurrent
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 CONFIG += release
+RC_ICONS = assets/voxcraft-viz.ico
 DEFINES += QT_XML_LIB QT_OPENGL_LIB USE_OPEN_GL QT_DLL PREC_MED
 INCLUDEPATH += \
     . \
@@ -14,21 +15,25 @@ INCLUDEPATH += \
     ./GeneratedFiles/$(Configuration) \
     ./GeneratedFiles
 
-
+windows {
+    INCLUDEPATH += \
+        /boost/boost_1_73_0
+    # change this to where your boost is
+}
 unix {
-INCLUDEPATH += \
-    /usr/include/qwt
+    INCLUDEPATH += \
+        /usr/include/qwt
 }
 windows {
-LIBS += \
-    -lOpenGL32 \
-    -lglu32 \
+    LIBS += \
+        -lOpenGL32 \
+        -lglu32 \
 }
 unix {
-LIBS += \
-    -lGL \
-    -lglut \
-    -lGLU \
+    LIBS += \
+        -lGL \
+        -lglut \
+        -lGLU \
 }
 
 LIBS += \

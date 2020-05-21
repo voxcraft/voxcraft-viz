@@ -14,6 +14,14 @@ The download link is at the bottom of the page
 
 During installation, select Kit: QT x.xx -> MinGW x.xx, select Tools: MinGW x.xx, make sure two MinGW are the same version.
 
+## Download Boost C++ Library
+
+Refer to https://www.boost.org/doc/libs/1_73_0/more/getting_started/windows.html
+
+Download from https://www.boost.org/users/history/version_1_73_0.html
+
+Extract files to C:\boost\, so the boost path will be C:\boost\boost_1_73_0 (If you change this path, please change the path in voxcraft-viz.pro accordingly.)
+
 ## Install MESA3D FOR WINDOWS
 
 Download from https://fdossena.com/?p=mesa/index.frag
@@ -28,6 +36,32 @@ Switch the project from Debug to Release Mode
 
 Build
 
+## Use MESA
+
+Now if you run it, you will see the OpenGL area as a black screen.
+
 Put downloaded opengl32.dll into the folder which contains the newly built executable.
 
 Run it.
+
+## Deliver the executable
+
+Refer to https://wiki.qt.io/Deploy_an_Application_on_Windows
+
+Make a new folder
+
+Copy those files from `release/` folder
+```
+voxcraft-viz.exe
+opengl32.dll
+```
+
+Copy those files from `c:\QT\QTx.x.x\bin\`
+```
+...dll
+```
+
+Copy this folder from `C:\QT\QTx.x.x\plugins\`
+```
+platforms/
+```
