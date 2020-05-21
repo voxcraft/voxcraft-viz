@@ -9,7 +9,7 @@ INCLUDEPATH += \
     ./src/ui \
     ./src/VX1 \
     ./src/VX2/include \
-    ./src/QUtils \
+    ./src/QTUtils \
     ./src/qcustomplot \
     ./GeneratedFiles/$(Configuration) \
     ./GeneratedFiles
