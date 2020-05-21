@@ -22,4 +22,12 @@ It is a DLL file (opengl32.dll). Later on, we need to put the dll in the folder 
 
 ## Open QT Creator
 
+Open the project file: voxcraft-viz.pro
 
+Switch the project from Debug to Release Mode
+
+Build
+
+Put downloaded opengl32.dll into the folder which contains the newly built executable.
+
+Run it.

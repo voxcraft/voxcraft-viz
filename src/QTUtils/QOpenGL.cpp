@@ -17,10 +17,10 @@
 // VX1
 #include "GL_Utils.h"
 
-#if defined(_WIN32) || defined(_WIN64) // to get fmax, fmin to work on Windows/Visual Studio
-#define fmax max
-#define fmin min
-#endif
+// #if defined(_WIN32) || defined(_WIN64) // to get fmax, fmin to work on Windows/Visual Studio
+// #define fmax max
+// #define fmin min
+// #endif
 
 int CQOpenGL::TotalID = 0;
 

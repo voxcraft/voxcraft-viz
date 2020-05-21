@@ -20,10 +20,10 @@ See the GNU Lesser General Public License for more details. See <http://www.open
 #include "OpenGLInclude.h" //If not using QT's openGL system, make a header file "OpenGLInclude.h" that includes openGL library functions
 #endif
 
-#if defined(_WIN32) || defined(_WIN64) // to get fmax, fmin to work on Windows/Visual Studio
-#define fmax max
-#define fmin min
-#endif
+// #if defined(_WIN32) || defined(_WIN64) // to get fmax, fmin to work on Windows/Visual Studio
+// #define fmax max
+// #define fmin min
+// #endif
 
 // TODO: Lists must be built for each gl context. Hmm.... (otherwise don't show up in other windows...)
 int CGL_Utils::CurContextID = 0;
