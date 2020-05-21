@@ -13,16 +13,25 @@ INCLUDEPATH += \
     ./src/qcustomplot \
     ./GeneratedFiles/$(Configuration) \
     ./GeneratedFiles
-#    /usr/include/qwt
+
+
+unix {
+INCLUDEPATH += \
+    /usr/include/qwt
+}
+windows {
 LIBS += \
-# Windows
     -lOpenGL32 \
     -lglu32 \
-# Linux
-#    -lGL \
-#    -lglut \
-#    -lGLU \
+}
+unix {
+LIBS += \
+    -lGL \
+    -lglut \
+    -lGLU \
+}
 
+LIBS += \
     -lz \
     -lm
 ################
