@@ -23,7 +23,7 @@ file(GLOB VX2_SRC ${VX2}/src/*.c* ${VX2}/src/*.h)
 file(GLOB VX1_SRC ${VX1}/*.c* ${VX1}/*.h)
 file(GLOB QTUTILS_SRC ${QTUTILS}/*.c* ${QTUTILS}/*.h)
 file(GLOB QCUSTOMPLOT_SRC src/qcustomplot/*.c* src/qcustomplot/*.h)
-add_executable(voxcraft-viz VoxCad.qrc ${VOXCAD_MAIN_SRC} ${VX2_SRC} ${VX1_SRC} ${QTUTILS_SRC} ${QCUSTOMPLOT_SRC})
+add_executable(voxcraft-viz voxcraft-viz.qrc ${VOXCAD_MAIN_SRC} ${VX2_SRC} ${VX1_SRC} ${QTUTILS_SRC} ${QCUSTOMPLOT_SRC})
 install(TARGETS voxcraft-viz DESTINATION bin)
 
 # add_definitions(-DQT_XML_LIB -DQT_OPENGL_LIB -DUSE_ZLIB_COMPRESSION -DUSE_OPEN_GL -DQT_DLL -DPREC_MED -DUSE_OMP)
