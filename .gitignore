@@ -2,6 +2,7 @@
 *.snap
 build
 .vscode
+*.pro.user
 
 # Prerequisites
 *.d
