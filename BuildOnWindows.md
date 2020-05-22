@@ -24,6 +24,8 @@ Extract files to C:\boost\, so the boost path will be C:\boost\boost_1_73_0 (If 
 
 ## Install MESA3D FOR WINDOWS
 
+Unfortunately, the hardware accelerated OpenGL has some problems that we cannot solve, so we use a pure software alternative.
+
 Download from https://fdossena.com/?p=mesa/index.frag
 
 It is a DLL file (opengl32.dll). Later on, we need to put the dll in the folder where the executable will be, so that the executable will use this opengl32.dll instead of Microsoft Windows' default opengl32.dll.
