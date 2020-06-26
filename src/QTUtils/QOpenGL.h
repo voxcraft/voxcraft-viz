@@ -59,6 +59,9 @@ struct Camera // structure representing a camera view of the scene
         Persp = PerspIn;
         Zoom = ZoomIn;
     };
+    void reset() {
+        XPos = 0, YPos = 0;
+    }
     GLfloat XPos, YPos, XRot, YRot, TargetX, TargetY, TargetZ, Persp, Zoom;
 };
 struct GL_Light // An OpenGL light structure

@@ -654,7 +654,8 @@ void QVX_Sim::ResetSim() {
     ReqGLUpdate();
 
     pSimView->currentHistoryLine = ""; // make current History line empty, so it will read until the first line that has content.
-
+    CQOpenGL* p = (CQOpenGL*)pGLWin;
+    p->m_Cam.reset();
 }
 
 void QVX_Sim::LMouseDown(Vec3D<> P) {
