@@ -1,7 +1,7 @@
 # Customized files
 *.snap
 build
-.vscode
+build_Release
 *.pro.user
 
 # Prerequisites
