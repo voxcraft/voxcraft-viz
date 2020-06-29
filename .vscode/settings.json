@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "*.vxa": "xml",
+        "*.vxd": "xml",
+        "*.pvsm": "xml",
+        "*.cu": "cpp",
+        "*.vxs": "xml",
+        "bitset": "cpp",
+        "memory": "cpp",
+        "random": "cpp",
+        "future": "cpp",
+        "optional": "cpp",
+        "iomanip": "cpp"
+    }
+}

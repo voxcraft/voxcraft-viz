@@ -973,6 +973,7 @@ void CVX_Object::GetVXCInfoStr(std::string* pString)
 		strm << "Volume: " << GetVolume()*1e9 << "mm^3, Weight: " << GetWeight()*1000 << "g\n";
 		strm << "Surface Area: " << GetSurfaceArea()*1e6 << "mm^2\n";
 		*pString = strm.str();
+		*pString = "Click one voxel for more information."; // remove all info about the VXC
 	}
 
 
@@ -984,13 +985,13 @@ void CVX_Object::GetVoxInfoStr(int VoxIndex, std::string* pString)
 		std::stringstream strm;
 		int x, y, z;
 		Vec3D<> pt = GetXYZ(VoxIndex);
-		GetXYZNom(&x, &y, &z, VoxIndex);
+		GetXYZNom(&x, &y, &z, VoxIndex); // This still works fine, since index can be converted into ix,iy,iz
 
 		strm << "Voxel: " << VoxIndex << "\n";
-		strm << "Index: (" << x << "," << y << "," << z << ")\n";
-		strm << "Location: (" << std::setprecision(3) << pt.x*1000 << "," << pt.y*1000 << "," << pt.z*1000 << ")mm\n";
-		strm << "Top Material: " << GetBaseMatAt(VoxIndex)->GetName() << "\n";
-		strm << "Leaf Material: " << GetLeafMat(VoxIndex)->GetName() << "\n";
+		// strm << "Index: (" << x << "," << y << "," << z << ")\n";
+		// strm << "Location: (" << std::setprecision(3) << pt.x*1000 << "," << pt.y*1000 << "," << pt.z*1000 << ")mm\n";
+		// strm << "Top Material: " << GetBaseMatAt(VoxIndex)->GetName() << "\n";
+		// strm << "Leaf Material: " << GetLeafMat(VoxIndex)->GetName() << "\n";
 
 		*pString = strm.str();
 	}

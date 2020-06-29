@@ -1273,8 +1273,9 @@ void CVXS_SimGLView::DrawHistory(int Selected, ViewVoxel historyView) {
                         }
                         glPopMatrix();
                         // Update camera view center, but gentlely.
-                        if (i++ == int(voxel.size() / 2))
+                        if (Selected==indexCounter || (Selected==-1 && (i++ == int(voxel.size() / 2)))) {
                             HistoryCM = HistoryCM * 0.95 + Vec3D<>(p1, p2, p3) * 0.05;
+                        }
                     }
                     currentHistoryLine = line;
                     return;

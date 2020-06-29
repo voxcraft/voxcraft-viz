@@ -267,7 +267,7 @@ class VoxCad : public QMainWindow {
             ReqGLUpdateAll();
             if (CurViewMode == VM_PHYSICS) {
                 PhysicsDlg->ApplyVoxSelection(NewSel);
-
+                VoxInfoDlg->UpdateText();
             } else {
                 BCsDlg->ApplyExtSelection(NewSel);
                 VoxInfoDlg->UpdateUI();
