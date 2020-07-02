@@ -60,6 +60,7 @@ Dlg_Physics::Dlg_Physics(QVX_Sim *pSimIn, QWidget *parent) : QWidget(parent) {
 
     connect(ui.PauseButton, SIGNAL(clicked()), this, SLOT(ClickedPause()));
     connect(ui.ResetButton, SIGNAL(clicked()), this, SLOT(ClickedReset()));
+    connect(ui.stepOneFrameButton, SIGNAL(clicked()), pSim->pSimView, SLOT(stepOneFrame()));
     connect(ui.RecordButton, SIGNAL(clicked(bool)), this, SLOT(ClickedRecord(bool)));
 
     connect(ui.UseEquilibriumCheck, SIGNAL(clicked(bool)), this, SLOT(UseEquilibriumCheckChanged(bool)));

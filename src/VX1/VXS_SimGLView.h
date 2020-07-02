@@ -139,6 +139,7 @@ class CVXS_SimGLView : public QObject{
 
     QString currentHistoryLine;
     bool HistoryPaused;
+    bool HistoryStepOneFrame = false;
 
     Vec3D<> HistoryCM;
     double historyTime = 0;
@@ -156,6 +157,8 @@ class CVXS_SimGLView : public QObject{
     std::map<int, CColor> matColors;
 signals:
     void ReqUpdateVoltagePlot(double time, double voltage, int voxelSel);
+public slots:
+    void stepOneFrame();
 };
 
 #endif // VX_SIMGLUTILS_H

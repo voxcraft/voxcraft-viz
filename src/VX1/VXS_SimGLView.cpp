@@ -250,8 +250,8 @@ void CVXS_SimGLView::DrawFloor(void) {
     for (int i = -20; i <= 30; i++) {
         for (int j = -40; j <= 60; j++) {
             // Draw Hexagons with different colors
-            double colorFloor = 0.8 + 0.1 * ((int)(1000 * sin((float)(i + 110) * (j + 106) * (j + 302))) % 10) / 10.0;
-            glColor4d(colorFloor, colorFloor, colorFloor + 0.1, 1.0);
+            double colorFloor = 0.85 + 0.04 * ((int)(1000 * sin((float)(i + 110) * (j + 106) * (j + 302))) % 10) / 10.0;
+            glColor4d(colorFloor, colorFloor, colorFloor, 1.0);
             glBegin(GL_TRIANGLE_FAN);
             glVertex3d(i * sX, j * sY, z);
             glVertex3d(i * sX + 0.5 * Size, j * sY, z);
@@ -263,8 +263,8 @@ void CVXS_SimGLView::DrawFloor(void) {
             glVertex3d(i * sX + 0.5 * Size, j * sY, z);
             glEnd();
 
-            colorFloor = 0.8 + 0.1 * ((int)(1000 * sin((float)(i + 100) * (j + 103) * (j + 369))) % 10) / 10.0;
-            glColor4d(colorFloor, colorFloor, colorFloor + 0.1, 1.0);
+            colorFloor = 0.85 + 0.04 * ((int)(1000 * sin((float)(i + 100) * (j + 103) * (j + 369))) % 10) / 10.0;
+            glColor4d(colorFloor, colorFloor, colorFloor, 1.0);
 
             glBegin(GL_TRIANGLE_FAN);
             glVertex3d(i * sX + .75 * Size, j * sY + 0.433 * Size, z);
@@ -1077,9 +1077,10 @@ void CVXS_SimGLView::DrawHistory(int Selected, ViewVoxel historyView) {
                 // pSim->StreamHistory->seek(0);
             }
             QString line;
-            if (HistoryPaused && currentHistoryLine != "") {
+            if (!HistoryStepOneFrame && HistoryPaused && currentHistoryLine != "") {
                 line = currentHistoryLine;
             } else {
+                HistoryStepOneFrame = false;
                 line = pSim->StreamHistory->readLine();
             }
             if (!line.isNull()) {
@@ -1290,4 +1291,8 @@ CColor CVXS_SimGLView::GetRnB(double v) {
     else if (v < 0)
         v = 0;
     return CColor(v, 1.5 * (1 - v) * v, (1 - v), 0.6);
+}
+
+void CVXS_SimGLView::stepOneFrame() {
+    HistoryStepOneFrame = true;
 }

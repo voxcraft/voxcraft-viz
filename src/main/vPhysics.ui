@@ -30,6 +30,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="stepOneFrameButton">
+       <property name="text">
+        <string>Step</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="ResetButton">
        <property name="minimumSize">
         <size>
@@ -54,7 +61,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../../VoxCad.qrc">
+        <iconset resource="../../voxcraft-viz.qrc">
          <normaloff>:/Icons/assets/Icons/Record.png</normaloff>:/Icons/assets/Icons/Record.png</iconset>
        </property>
        <property name="checkable">
@@ -1361,7 +1368,7 @@ Useful for highly unstable scenarios.</string>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../VoxCad.qrc"/>
+  <include location="../../voxcraft-viz.qrc"/>
  </resources>
  <connections/>
 </ui>
