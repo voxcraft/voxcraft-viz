@@ -157,6 +157,7 @@ class CVXS_SimGLView : public QObject{
     std::map<int, CColor> matColors;
 signals:
     void ReqUpdateVoltagePlot(double time, double voltage, int voxelSel);
+    void UpdateText(QString);
 public slots:
     void stepOneFrame();
 };

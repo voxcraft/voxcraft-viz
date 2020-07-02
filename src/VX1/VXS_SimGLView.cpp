@@ -1183,6 +1183,8 @@ void CVXS_SimGLView::DrawHistory(int Selected, ViewVoxel historyView) {
                     QString mline = voxel_link[0].mid(j + 3, voxel_link[0].length() - j - 10);
                     QStringList voxel = mline.split(";");
                     Message += "\n\nVoxels: " + QString::number(voxel.size()) + "\n";
+                    emit UpdateText(Message);
+
                     Vec3D<> v1, v2;
                     double p1, p2, p3;
                     double angle, r1, r2, r3;

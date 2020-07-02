@@ -337,6 +337,7 @@ void VoxCad::SetupPhysicsWindow(void) {
 
     connect(PhysicsDockWidget->toggleViewAction(), SIGNAL(triggered(bool)), this, SLOT(PhysicsMode(bool)));
     connect(&MainSim, SIGNAL(UpdateText(QString)), PhysicsDlg, SLOT(SetStatusText(QString)));
+    connect(MainSim.pSimView, SIGNAL(UpdateText(QString)), PhysicsDlg, SLOT(SetStatusText(QString)));
     connect(&MainSim, SIGNAL(ReqGLUpdate()), this, SLOT(ReqGLUpdateAll()));
     connect(&MainSim, SIGNAL(ReqUiUpdate()), PhysicsDlg, SLOT(UpdateUI()));
     connect(&MainSim, SIGNAL(ReqGLDrawingStatus(bool *)), GLWindow, SLOT(IsDrawing(bool *)));
