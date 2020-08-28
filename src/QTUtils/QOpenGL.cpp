@@ -651,8 +651,10 @@ void CQOpenGL::SetView(int ViewIndex) {
 
     switch (CurView) {
     case VPERSPECTIVE:
-        m_Cam = Camera(0.0f, 0.0f, 280.0f, 210.0f, 0.0f, 0.0f, 0.0f, 30.0f, 1.0f);
-        break; // initialize the camera to default angle
+        // initialize the camera to default angle
+        // according to what is printed in file VXS_SimGLView.cpp #1065
+        m_Cam = Camera(0.0f, 0.0f, 360-40, 360, 0.0f, 0.0f, 0.0f, 30.0f, 1.0f);
+        break;
     case VTOP:
         m_Cam.XRot = 0.0f;
         m_Cam.YRot = 0.0f;

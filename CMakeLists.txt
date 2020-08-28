@@ -1,4 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
+
+if (NOT DEFINED CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE RELEASE)
+endif()
+
 option(BUILD_SHARED_LIBS "Build shared library" OFF)
 option(BUILD_STATIC_LIBS "Build static library" ON)
 
@@ -91,7 +96,8 @@ else()
     if (glm_FOUND)
         message(STATUS "GLM FOUND")
         target_include_directories(voxcraft-viz PRIVATE ${glm_INCLUDE_DIRS})
-        target_link_libraries(voxcraft-viz PRIVATE ${glm_LIBRARIES} glm)
+        target_link_libraries(voxcraft-viz PRIVATE ${glm_LIBRARIES})
+        # target_link_libraries(voxcraft-viz PRIVATE ${glm_LIBRARIES} glm) # After upgrade to Ubuntu 20.04, no need to add -lglm here
     endif()
 endif()
 

@@ -1061,7 +1061,12 @@ void CVXS_SimGLView::DrawHistory(int Selected, ViewVoxel historyView) {
     }
     bool ZoomNear = false;
     bool ZoomVeryFar = false;
-    // printf("pGLWin->m_Cam.Zoom: %f\n", pGLWin->m_Cam.Zoom);
+    
+    // Print Cam parameters for manually setting in QOpenGL.cpp
+    // printf("m_Cam: XPos, YPos, XRot, YRot, TargetX, TargetY, TargetZ, Persp, Zoom\n%f, %f, %f, %f, %f, %f, %f, %f, %f\n", 
+    //     pGLWin->m_Cam.XPos, pGLWin->m_Cam.YPos, pGLWin->m_Cam.XRot, pGLWin->m_Cam.YRot, 
+    //     pGLWin->m_Cam.TargetX, pGLWin->m_Cam.TargetY, pGLWin->m_Cam.TargetZ, pGLWin->m_Cam.Persp, pGLWin->m_Cam.Zoom);
+
     if (pGLWin->m_Cam.Zoom < 50) {
         ZoomNear = true;
     }
@@ -1191,6 +1196,7 @@ void CVXS_SimGLView::DrawHistory(int Selected, ViewVoxel historyView) {
                     int matid;
                     int i = 0;
                     int indexCounter = 0;
+                    RealHistoryCM = Vec3D<>(0,0,0);
 
                     for (auto &v : voxel) {
                         // for (int i = 0; i < voxel.size(); i++) {
@@ -1276,9 +1282,15 @@ void CVXS_SimGLView::DrawHistory(int Selected, ViewVoxel historyView) {
                         }
                         glPopMatrix();
                         // Update camera view center, but gentlely.
-                        if (Selected==indexCounter || (Selected==-1 && (i++ == int(voxel.size() / 2)))) {
+                        if (Selected==indexCounter) {
                             HistoryCM = HistoryCM * 0.95 + Vec3D<>(p1, p2, p3) * 0.05;
                         }
+                        RealHistoryCM += Vec3D<>(p1, p2, p3);
+                    }
+                    RealHistoryCM = RealHistoryCM * (1/(indexCounter+0.000001));
+                    if (Selected==-1) {
+                        HistoryCM = HistoryCM * 0.95 + RealHistoryCM * 0.05;
+                        // HistoryCM = RealHistoryCM;
                     }
                     currentHistoryLine = line;
                     return;

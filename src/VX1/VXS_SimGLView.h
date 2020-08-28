@@ -142,6 +142,7 @@ class CVXS_SimGLView : public QObject{
     bool HistoryStepOneFrame = false;
 
     Vec3D<> HistoryCM;
+    Vec3D<> RealHistoryCM;
     double historyTime = 0;
     bool drawCylinder = false;
     double cylinderX, cylinderY, cylinderR;
