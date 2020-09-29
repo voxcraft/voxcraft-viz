@@ -3,6 +3,7 @@
 build
 build_Release
 *.pro.user
+*.history
 
 # Prerequisites
 *.d

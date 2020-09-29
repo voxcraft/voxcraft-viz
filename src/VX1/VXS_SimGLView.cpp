@@ -1079,6 +1079,7 @@ void CVXS_SimGLView::DrawHistory(int Selected, ViewVoxel historyView) {
             if (pSim->StreamHistory->atEnd()) {
                 qInfo() << "history loop, reload the file.";
                 pSim->LoadHistoryFile(pSim->fileHistory->fileName());
+                RecordedCoMPoints.clear();
                 // pSim->StreamHistory->seek(0);
             }
             QString line;
@@ -1144,41 +1145,77 @@ void CVXS_SimGLView::DrawHistory(int Selected, ViewVoxel historyView) {
                 int j = 0;
                 QStringList voxel_link = line.split("|");
                 if (voxel_link.size() > 1) {
-                    if ((j = voxel_link[1].indexOf("]]]")) != -1) {
-                        glBegin(GL_LINE_STRIP);
-                        float PrevLineWidth;
-                        float x1, y1, z1, x2, y2, z2;
-                        glColor4f(colorMap[9].r, colorMap[9].g, colorMap[9].b, colorMap[9].a);
-                        glGetFloatv(GL_LINE_WIDTH, &PrevLineWidth);
-                        glLineWidth(3.0);
-                        glDisable(GL_LIGHTING);
+                    for (int id_type=1; id_type<voxel_link.size(); id_type++) {
+                        if ((j = voxel_link[id_type].indexOf("]]]")) != -1) {
+                            glBegin(GL_LINE_STRIP);
+                            float PrevLineWidth;
+                            float x1, y1, z1, x2, y2, z2;
+                            glColor4f(colorMap[9].r, colorMap[9].g, colorMap[9].b, colorMap[9].a);
+                            glGetFloatv(GL_LINE_WIDTH, &PrevLineWidth);
+                            glLineWidth(3.0);
+                            glDisable(GL_LIGHTING);
 
-                        QString mline = voxel_link[1].mid(j + 3, voxel_link[1].length() - j - 10);
-                        QStringList link = mline.split(";");
-                        for (int i = 0; i < link.size(); i++) {
-                            pos = link[i].split(",");
-                            if (pos.size() <= 1)
-                                continue;
-                            if (pos.size() < 6) {
-                                qWarning() << "ERROR: a link has pos size is " << pos.size() << "<6." << link[i];
-                                continue;
+                            QString mline = voxel_link[id_type].mid(j + 3, voxel_link[id_type].length() - j - 10);
+                            QStringList link = mline.split(";");
+                            for (int i = 0; i < link.size(); i++) {
+                                pos = link[i].split(",");
+                                if (pos.size() <= 1)
+                                    continue;
+                                if (pos.size() < 6) {
+                                    qWarning() << "ERROR: a link has pos size is " << pos.size() << "<6." << link[i];
+                                    continue;
+                                }
+                                x1 = pos[0].toDouble();
+                                y1 = pos[1].toDouble();
+                                z1 = pos[2].toDouble();
+                                x2 = pos[3].toDouble();
+                                y2 = pos[4].toDouble();
+                                z2 = pos[5].toDouble();
+                                glBegin(GL_LINES);
+                                glLoadName(-1); // to disable picking
+                                glVertex3f(x1, y1, z1);
+                                glVertex3f(x2, y2, z2);
+                                glEnd();
                             }
-                            x1 = pos[0].toDouble();
-                            y1 = pos[1].toDouble();
-                            z1 = pos[2].toDouble();
-                            x2 = pos[3].toDouble();
-                            y2 = pos[4].toDouble();
-                            z2 = pos[5].toDouble();
-                            glBegin(GL_LINES);
-                            glLoadName(-1); // to disable picking
-                            glVertex3f(x1, y1, z1);
-                            glVertex3f(x2, y2, z2);
                             glEnd();
+                            glLineWidth(PrevLineWidth);
+                            glEnable(GL_LIGHTING);
                         }
-                        glEnd();
-                        glLineWidth(PrevLineWidth);
-                        glEnable(GL_LIGHTING);
+                        if ((j = voxel_link[id_type].indexOf("}}}")) != -1) {
+                            float x1, y1, z1, x2, y2, z2;
+                            QString mline = voxel_link[id_type].mid(j + 3, voxel_link[id_type].length() - j - 10);
+                            QStringList points = mline.split(";");
+                            for (int i = 0; i < points.size(); i++) {
+                                pos = points[i].split(",");
+                                // printf("pos.size %d\n", pos.size());
+                                if (pos.size() <= 1)
+                                    continue;
+                                if (pos.size() < 3) {
+                                    qWarning() << "ERROR: a point has pos size is " << pos.size() << "<3." << points[i];
+                                    continue;
+                                }
+                                x1 = pos[0].toDouble();
+                                y1 = pos[1].toDouble();
+                                z1 = pos[2].toDouble();
+                                RecordedCoMPoints.push_back(Vec3D<>(x1,y1,z1));
+
+                            }
+                        }
                     }
+                }
+                {
+                    glPointSize(3.0);
+                    glColor4f(colorMap[4].r, colorMap[4].g, colorMap[4].b, colorMap[4].a);
+                    glDisable(GL_LIGHTING);
+                    for (Vec3D<> p : RecordedCoMPoints) {
+                        glBegin(GL_POINTS);
+                        glLoadName(-1); // to disable picking
+                        glVertex3f(p.x, p.y, p.z);
+                        glEnd();
+                    }
+                    // glEnd();
+                    // glLineWidth(PrevLineWidth);
+                    glEnable(GL_LIGHTING);
                 }
                 if ((j = voxel_link[0].indexOf(">>>")) != -1) {
                     Message = voxel_link[0].mid(3, j - 3);

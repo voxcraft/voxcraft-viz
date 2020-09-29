@@ -153,6 +153,8 @@ class CVXS_SimGLView : public QObject{
     double rescale = 1.0;
     double voxel_size = 0.01;
 
+    std::vector<Vec3D<>> RecordedCoMPoints;
+
     QString Message;
 
     std::map<int, CColor> matColors;

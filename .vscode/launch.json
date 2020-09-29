@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/voxcraft-viz",
-            "args": ["${workspaceFolder}/demos/m190.history"],
+            "args": ["~/Simulators/voxcraft/voxcraft-dev-sida-growth/demos/recordCoM/a.history"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
